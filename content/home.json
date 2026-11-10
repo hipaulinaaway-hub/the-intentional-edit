@@ -5,13 +5,17 @@
     "image": "/assets/hero.jpg",
     "eyebrow": "Luxury travel for busy professionals",
     "headline": "Unplug",
-    "headline_italic": "to Reconnect",
+    "headline_italic": "to Reconnect & enjoy your life",
     "button_text": "Start planning",
     "button_link": "#contact"
   },
   "services": {
     "heading": "Services",
-    "items": ["Book hotels", "Full itinerary", "Consultation"]
+    "items": [
+      "Book hotels",
+      "Full itinerary",
+      "Consultation"
+    ]
   },
   "story": {
     "heading": "Creating the feeling behind the stay.",
