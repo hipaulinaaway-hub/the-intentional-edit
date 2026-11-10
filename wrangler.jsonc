@@ -2,6 +2,10 @@
   // Static site served by Cloudflare Workers (assets only, no Worker script).
   "name": "the-intentional-edit",
   "compatibility_date": "2026-11-01",
+  // Builds public/index.html from src/index.html + content/home.json before every deploy.
+  "build": {
+    "command": "node build.js"
+  },
   "assets": {
     "directory": "./public"
   }

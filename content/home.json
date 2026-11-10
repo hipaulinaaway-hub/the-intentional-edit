@@ -1,0 +1,35 @@
+{
+  "seo_title": "The Intentional Edit",
+  "seo_description": "Luxury travel planning for busy professionals: hotel booking, full itineraries and consultations.",
+  "hero": {
+    "image": "/assets/hero.jpg",
+    "eyebrow": "Luxury travel for busy professionals",
+    "headline": "Unplug",
+    "headline_italic": "to Reconnect",
+    "button_text": "Start planning",
+    "button_link": "#contact"
+  },
+  "services": {
+    "heading": "Services",
+    "items": ["Book hotels", "Full itinerary", "Consultation"]
+  },
+  "story": {
+    "heading": "Creating the feeling behind the stay.",
+    "paragraphs": [
+      "Beautiful hospitality is about more than where you stay. It’s the meal you can’t stop thinking about, the unexpected details that make all the difference, and the moments you’ll cherish long after you leave.",
+      "I create visual storytelling that captures what makes a place worth experiencing"
+    ],
+    "photo_left": {
+      "image": "/assets/food.jpg",
+      "alt": "A table of Mediterranean dishes: mussels, salads, grilled calamari and a terrine"
+    },
+    "photo_right": {
+      "image": "/assets/pool.jpg",
+      "alt": "A woman in an infinity pool looking out over the caldera at sunset"
+    }
+  },
+  "footer": {
+    "signup_heading": "Just leave your email and leave your rest for me",
+    "email_placeholder": "Email"
+  }
+}

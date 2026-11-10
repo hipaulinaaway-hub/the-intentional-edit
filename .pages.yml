@@ -1,0 +1,58 @@
+# Pages CMS configuration — https://pagescms.org/docs/configuration/
+media:
+  input: public/assets
+  output: /assets
+
+content:
+  - name: home
+    label: Home page
+    type: file
+    path: content/home.json
+    format: json
+    fields:
+      - name: seo_title
+        label: Page title (browser tab & Google)
+        type: string
+      - name: seo_description
+        label: Page description (Google)
+        type: text
+      - name: hero
+        label: Hero
+        type: object
+        fields:
+          - { name: image, label: Background image, type: image }
+          - { name: eyebrow, label: Small text above headline, type: string }
+          - { name: headline, label: Headline (regular), type: string }
+          - { name: headline_italic, label: Headline (italic part), type: string }
+          - { name: button_text, label: Button text, type: string }
+          - { name: button_link, label: Button link, type: string }
+      - name: services
+        label: Services
+        type: object
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - { name: items, label: Services, type: string, list: true }
+      - name: story
+        label: Story section
+        type: object
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - { name: paragraphs, label: Paragraphs, type: text, list: true }
+          - name: photo_left
+            label: Left photo
+            type: object
+            fields:
+              - { name: image, label: Image, type: image }
+              - { name: alt, label: Description (for screen readers), type: string }
+          - name: photo_right
+            label: Right photo
+            type: object
+            fields:
+              - { name: image, label: Image, type: image }
+              - { name: alt, label: Description (for screen readers), type: string }
+      - name: footer
+        label: Footer
+        type: object
+        fields:
+          - { name: signup_heading, label: Email signup heading, type: string }
+          - { name: email_placeholder, label: Email field placeholder, type: string }

@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Intentional Edit</title>
+<title>{{seo_title}}</title>
+<meta name="description" content="{{seo_description}}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
@@ -59,7 +60,7 @@
   .hero {
     position: relative;
     height: 711px;
-    background: #1d3036 url("assets/hero.jpg") center / cover no-repeat;
+    background: #1d3036 center / cover no-repeat;
     color: #fff;
     display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
     padding-bottom: 79px;
@@ -186,7 +187,7 @@
     <a class="nav-link" href="#">Destinations</a>
   </nav>
   <a class="logo" href="#" aria-label="The Intentional Edit — home">
-    <img src="assets/logo.png" width="159" height="47" alt="The Intentional Edit">
+    <img src="/assets/logo.png" width="159" height="47" alt="The Intentional Edit">
   </a>
   <nav class="label" aria-label="Secondary">
     <a class="nav-link" href="#">Portfolio</a>
@@ -196,36 +197,33 @@
 </header>
 
 <main>
-  <section class="hero">
-    <p class="eyebrow">Luxury travel for busy professionals</p>
-    <h1>Unplug <em>to Reconnect</em></h1>
-    <a class="btn-oval" href="#contact">Start planning</a>
+  <section class="hero" style="background-image: url('{{hero.image}}')">
+    <p class="eyebrow">{{hero.eyebrow}}</p>
+    <h1>{{hero.headline}} <em>{{hero.headline_italic}}</em></h1>
+    <a class="btn-oval" href="{{hero.button_link}}">{{hero.button_text}}</a>
   </section>
 
   <section class="services" id="services">
-    <h2 class="display">Services</h2>
+    <h2 class="display">{{services.heading}}</h2>
     <ul class="display">
-      <li>Book hotels</li>
-      <li>Full itinerary</li>
-      <li>Consultation</li>
+{{services.items}}
     </ul>
   </section>
 
   <section class="story">
-    <h2 class="display">Creating the feeling behind the stay.</h2>
-    <img class="photo photo-food" src="assets/food.jpg" width="249" height="323" alt="A table of Mediterranean dishes: mussels, salads, grilled calamari and a terrine">
+    <h2 class="display">{{story.heading}}</h2>
+    <img class="photo photo-food" src="{{story.photo_left.image}}" width="249" height="323" alt="{{story.photo_left.alt}}">
     <div class="copy">
-      <p>Beautiful hospitality is about more than where you stay. It’s the meal you can’t stop thinking about, the unexpected details that make all the difference, and the moments you’ll cherish long after you leave.</p>
-      <p>I create visual storytelling that captures what makes a place worth experiencing</p>
+{{story.paragraphs}}
     </div>
-    <img class="photo photo-pool" src="assets/pool.jpg" width="249" height="323" alt="A woman in an infinity pool looking out over the caldera at sunset">
+    <img class="photo photo-pool" src="{{story.photo_right.image}}" width="249" height="323" alt="{{story.photo_right.alt}}">
   </section>
 </main>
 
 <footer class="site-footer" id="contact">
-  <img class="footer-script" src="assets/footer-script.png" alt="" aria-hidden="true">
+  <img class="footer-script" src="/assets/footer-script.png" alt="" aria-hidden="true">
   <div class="footer-inner">
-    <img class="monogram" src="assets/monogram.png" width="120" height="189" alt="The Intentional Edit monogram">
+    <img class="monogram" src="/assets/monogram.png" width="120" height="189" alt="The Intentional Edit monogram">
     <nav class="footer-nav label" aria-label="Footer">
       <a class="nav-link" href="#">Home</a>
       <a class="nav-link" href="#services">Services</a>
@@ -235,10 +233,10 @@
       <a class="nav-link is-active" href="#contact">Contact</a>
     </nav>
     <div class="signup">
-      <h3>Just leave your email and leave your rest for me</h3>
+      <h3>{{footer.signup_heading}}</h3>
       <form class="label" onsubmit="return false">
         <label for="email" class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Email</label>
-        <input id="email" type="email" placeholder="Email" autocomplete="email">
+        <input id="email" type="email" placeholder="{{footer.email_placeholder}}" autocomplete="email">
         <button type="submit" aria-label="Submit email">
           <svg width="21" height="8" viewBox="0 0 21 8" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 4h20M16.5 .5 20 4l-3.5 3.5"/></svg>
         </button>
