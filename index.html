@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Intentional Edit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f4f0e8;
+    --ink: #2e1d14;
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "DM Sans", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-font-smoothing: antialiased; }
+  body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-variation-settings: "opsz" 14; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; }
+
+  .label {
+    font-family: var(--sans);
+    font-size: 12.375px;
+    line-height: 1.02;
+    letter-spacing: 0.495px;
+    text-transform: uppercase;
+  }
+  .display {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 46px;
+    line-height: 1.02;
+    letter-spacing: -1.38px;
+  }
+
+  /* ---------- Header ---------- */
+  .site-header {
+    height: 92px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    column-gap: 98px;
+    align-items: start;
+  }
+  .site-header nav { display: flex; gap: 30px; padding-top: 38px; }
+  .site-header nav:first-child { justify-content: flex-end; }
+  .site-header .logo { padding-top: 20px; }
+  .site-header .logo img { width: 159px; height: auto; }
+  .nav-link { position: relative; transition: opacity .2s; }
+  .nav-link:hover { opacity: .6; }
+  .nav-link.is-active { font-weight: 500; }
+  .nav-link.is-active::after {
+    content: ""; position: absolute; left: 0; right: 0; top: 16px;
+    height: 1px; background: var(--ink);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    height: 711px;
+    background: #1d3036 url("assets/hero.jpg") center / cover no-repeat;
+    color: #fff;
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+    padding-bottom: 79px;
+    text-align: center;
+  }
+  .hero .eyebrow { font-size: 16px; letter-spacing: 0.64px; line-height: 1.02; text-transform: uppercase; }
+  .hero h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 60.316px; line-height: 1.02; letter-spacing: -1.8095px;
+    margin-top: 14px;
+  }
+  .hero h1 em { font-style: italic; font-weight: 500; }
+  .btn-oval {
+    margin-top: 44px;
+    width: 218px; height: 62px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid #fff; border-radius: 50%;
+    font-size: 16px; letter-spacing: 0.64px; line-height: 1.02; text-transform: uppercase;
+    transition: background .25s, color .25s;
+  }
+  .btn-oval:hover { background: #fff; color: var(--ink); }
+
+  /* ---------- Services ---------- */
+  .services { padding: 113px 24px 0; text-align: center; }
+  .services ul {
+    list-style: none; max-width: 1102px; margin: 51px auto 0;
+  }
+  .services li + li { margin-top: 25px; padding-top: 25px; border-top: 1px solid rgba(46, 29, 20, 0.1); }
+
+  /* ---------- Story ---------- */
+  .story { position: relative; height: 501px; margin-top: 187px; }
+  .story > * { position: absolute; }
+  .story h2 { width: 384px; left: calc(50% - 192px); top: 0; text-align: center; }
+  .story .photo { width: 249px; height: 323px; object-fit: cover; }
+  .story .photo-food { left: calc(50% - 465px); top: 57px; }
+  .story .photo-pool { left: calc(50% + 184px); top: 178px; }
+  .story .copy {
+    width: 222px; left: calc(50% - 121px); top: 127px;
+    font-size: 12px; line-height: 1.3; letter-spacing: 0.48px;
+  }
+  .story .copy p + p { margin-top: 1.3em; }
+
+  /* ---------- Footer ---------- */
+  .site-footer {
+    position: relative; overflow: hidden;
+    margin-top: 159px; height: 502px;
+    background: var(--ink); color: #fff;
+  }
+  .footer-script {
+    position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+    width: 1336px; max-width: none; pointer-events: none;
+  }
+  .footer-inner { position: relative; height: 100%; }
+  .footer-inner > * { position: absolute; }
+  .monogram { left: calc(50% - 554px); top: 42px; width: 120px; height: auto; }
+  .footer-nav { left: calc(50% - 340px); top: 53px; display: flex; flex-direction: column; gap: 10px; }
+  .footer-nav .nav-link.is-active::after { display: none; }
+  .signup { left: calc(50% + 47px); top: 48px; width: 410px; }
+  .signup h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 25.313px; line-height: 1.02; letter-spacing: -0.7594px;
+    width: 290px;
+  }
+  .signup form {
+    position: relative; margin-top: 25px; margin-left: 1px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    height: 35px; padding-bottom: 9px;
+  }
+  .signup input {
+    flex: 1; background: none; border: 0; outline: 0; color: #fff;
+    font: inherit; height: 26px;
+  }
+  .signup input::placeholder { color: #fff; opacity: .3; }
+  .signup button {
+    width: 68px; height: 26px; flex: none;
+    border: 1px solid #fff; border-radius: 50%; background: none; color: #fff;
+    display: inline-flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: background .25s, color .25s;
+  }
+  .signup button:hover { background: #fff; color: var(--ink); }
+  .signup button svg { margin-left: 4px; }
+
+  /* ---------- Smaller screens ---------- */
+  @media (max-width: 1100px) {
+    .site-header { column-gap: 48px; }
+    .site-header nav { gap: 20px; }
+  }
+  @media (max-width: 860px) {
+    .site-header {
+      height: auto; padding: 20px 20px 18px;
+      grid-template-columns: 1fr; row-gap: 14px; justify-items: center;
+    }
+    .site-header .logo { order: -1; padding-top: 0; }
+    .site-header nav { padding-top: 0; justify-content: center !important; flex-wrap: wrap; gap: 18px; }
+    .hero { height: 560px; padding: 0 20px 56px; }
+    .hero .eyebrow { font-size: 13px; }
+    .hero h1 { font-size: 44px; }
+    .btn-oval { margin-top: 32px; }
+    .services { padding-top: 72px; }
+    .display { font-size: 36px; }
+    .services ul { margin-top: 36px; }
+    .story { height: auto; margin-top: 96px; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .story > * { position: static; }
+    .story h2 { width: auto; grid-column: 1 / -1; }
+    .story .copy { width: auto; grid-column: 1 / -1; max-width: 360px; justify-self: center; font-size: 14px; }
+    .story .photo { width: 100%; height: auto; aspect-ratio: 249 / 323; }
+    .story .photo-food { grid-row: 3; }
+    .story .photo-pool { grid-row: 3; margin-top: 48px; }
+    .site-footer { margin-top: 96px; height: auto; }
+    .footer-inner { height: auto; padding: 48px 24px 120px; display: grid; grid-template-columns: auto 1fr; gap: 40px; }
+    .footer-inner > * { position: static; }
+    .signup { grid-column: 1 / -1; width: 100%; max-width: 410px; }
+    .signup form { margin-top: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="label" aria-label="Primary">
+    <a class="nav-link" href="#">Home</a>
+    <a class="nav-link" href="#services">Services</a>
+    <a class="nav-link" href="#">Destinations</a>
+  </nav>
+  <a class="logo" href="#" aria-label="The Intentional Edit — home">
+    <img src="assets/logo.png" width="159" height="47" alt="The Intentional Edit">
+  </a>
+  <nav class="label" aria-label="Secondary">
+    <a class="nav-link" href="#">Portfolio</a>
+    <a class="nav-link" href="#">About</a>
+    <a class="nav-link is-active" href="#contact" aria-current="page">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="eyebrow">Luxury travel for busy professionals</p>
+    <h1>Unplug <em>to Reconnect</em></h1>
+    <a class="btn-oval" href="#contact">Start planning</a>
+  </section>
+
+  <section class="services" id="services">
+    <h2 class="display">Services</h2>
+    <ul class="display">
+      <li>Book hotels</li>
+      <li>Full itinerary</li>
+      <li>Consultation</li>
+    </ul>
+  </section>
+
+  <section class="story">
+    <h2 class="display">Creating the feeling behind the stay.</h2>
+    <img class="photo photo-food" src="assets/food.jpg" width="249" height="323" alt="A table of Mediterranean dishes: mussels, salads, grilled calamari and a terrine">
+    <div class="copy">
+      <p>Beautiful hospitality is about more than where you stay. It’s the meal you can’t stop thinking about, the unexpected details that make all the difference, and the moments you’ll cherish long after you leave.</p>
+      <p>I create visual storytelling that captures what makes a place worth experiencing</p>
+    </div>
+    <img class="photo photo-pool" src="assets/pool.jpg" width="249" height="323" alt="A woman in an infinity pool looking out over the caldera at sunset">
+  </section>
+</main>
+
+<footer class="site-footer" id="contact">
+  <img class="footer-script" src="assets/footer-script.png" alt="" aria-hidden="true">
+  <div class="footer-inner">
+    <img class="monogram" src="assets/monogram.png" width="120" height="189" alt="The Intentional Edit monogram">
+    <nav class="footer-nav label" aria-label="Footer">
+      <a class="nav-link" href="#">Home</a>
+      <a class="nav-link" href="#services">Services</a>
+      <a class="nav-link" href="#">Destinations</a>
+      <a class="nav-link" href="#">Portfolio</a>
+      <a class="nav-link" href="#">About</a>
+      <a class="nav-link is-active" href="#contact">Contact</a>
+    </nav>
+    <div class="signup">
+      <h3>Just leave your email and leave your rest for me</h3>
+      <form class="label" onsubmit="return false">
+        <label for="email" class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Email</label>
+        <input id="email" type="email" placeholder="Email" autocomplete="email">
+        <button type="submit" aria-label="Submit email">
+          <svg width="21" height="8" viewBox="0 0 21 8" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 4h20M16.5 .5 20 4l-3.5 3.5"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
